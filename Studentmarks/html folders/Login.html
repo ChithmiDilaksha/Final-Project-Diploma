@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login Form</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script>
+       function validateForm() {
+    var Name = document.forms["loginForm"]["Name"].value;
+    var password = document.forms["loginForm"]["password"].value;
+    if (Name == "" || password == "") {
+        var errorDiv = document.getElementById("error-message");
+        errorDiv.innerHTML = "Username and password must be filled out";
+        errorDiv.style.display = "block";
+        return false;
+    }
+    return true; // Return true if the form is valid
+}
+
+        function redirectToHome() {
+            if (validateForm()) {
+                var userType = document.getElementById("userType").value;
+                if (userType === "teacher") {
+                    window.location.href = "TeacherHome.html";
+                } else if (userType === "student") {
+                    window.location.href = "StudentHome.html";
+                } else if (userType === "admin") {
+                    window.location.href = "AdminHome.html";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<section class="form-08">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="_form-08-main">
+                    <div class="_form-08-head">
+                        <h2>Welcome Back</h2>
+                    </div>
+                    <form name="loginForm" onsubmit="return validateForm()" action="authenticate.php" method="post">
+                        <div class="form-group">
+                            <label>Enter Your Name</label>
+                            <input type="Name" name="Name" class="form-control" placeholder="Enter Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Enter Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                        </div>
+
+                        <!-- Adding Combo Box for User Type -->
+                        <div class="form-group">
+                            <label>Select User Type</label>
+                            <select id="userType" class="form-control">
+                                <option value="teacher">Teacher</option>
+                                <option value="student">Student</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <center><button type="submit" class="btn btn-primary" onclick="redirectToHome()">Login</button></center>
+                        </div>
+
+                        <!-- Error message display -->
+                        <center><div id="error-message" style="display: none; color: red; "></div></center>
+                    </form>
+                    <div class="sub-01">
+                        <img src="assets/images/shap-02.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

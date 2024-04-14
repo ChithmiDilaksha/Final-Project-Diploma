@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS studentmarksdisplaysystem;
+USE studentmarksdisplaysystem;
+
+CREATE TABLE admin (
+    AdminID INT  PRIMARY KEY,
+    FullName VARCHAR(255),
+    username VARCHAR(255),
+    password VARCHAR(255),
+    usertype VARCHAR(255),
+    phonenumber VARCHAR(20),
+    Address VARCHAR(255),
+    email VARCHAR(255),
+    grade VARCHAR(255)
+);
+
+CREATE TABLE teacher (
+    TID INT  PRIMARY KEY,
+    FullName VARCHAR(255),
+    username VARCHAR(255),
+    password VARCHAR(255),
+    usertype VARCHAR(255),
+    email VARCHAR(255),
+    phonenumber VARCHAR(20),
+    address VARCHAR(255),
+    GID INT
+);
+
+CREATE TABLE  student (
+    SID INT  PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    Fullname VARCHAR(255),
+    Email VARCHAR(255),
+    phonenum VARCHAR(20),
+    Class VARCHAR(255),
+    Address VARCHAR(255),
+    usertype VARCHAR(255)
+);
+
+CREATE TABLE studentgrade (
+    SID INT,
+    GID INT,
+    PRIMARY KEY (SID, GID)
+);
+
+CREATE TABLE subject (
+    subID INT  PRIMARY KEY,
+    subname VARCHAR(255)
+);
